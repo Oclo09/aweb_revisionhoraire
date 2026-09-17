@@ -19,11 +19,13 @@ function AfficherListeClasses($lstClasses) : string {
                         <td>{$classes['nom']}</td>
                         <td>{$classes['annee_scolaire']}</td>
                         <td>
-                            <form method=\"get\" action=\"modifier.php?id={$classes['id']}\">
-                                <button type=\"submit\" name=\"submit\" value=\"modifier\">Modifier</button>
+                            <form action=\"modifier.php\" method=\"post\">
+                                <input type=\"hidden\" name=\"id\" value=\"{$classes['id']}\">
+                                <button>Modifier</button>
                             </form>
-                            <form method=\"get\" action=\"supprimer.php?id={$classes['id']}\">
-                                <button type=\"submit\" name=\"submit\" value=\"modifier\">Supprimer</button>
+                            <form action=\"supprimer.php\" method=\"post\">
+                                <input type=\"hidden\" name=\"id\" value=\"{$classes['id']}\">
+                                <button>Supprimer</button>
                             </form>
                         </td>
                       </tr>";
@@ -42,7 +44,7 @@ function AfficherListeClasses($lstClasses) : string {
 </head>
 <body>
     <h1>Liste des Classes</h1>
-    <form action="gerer.php" method="post">
+    <form action="ajouter.php" method="post">
         <button type="submit">Ajouter</button>
     </form>
     <hr>

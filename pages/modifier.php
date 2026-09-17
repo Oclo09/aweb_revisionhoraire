@@ -5,7 +5,9 @@ require_once ROOT . "/functions/classes.php";
 
 $submit = filter_input(INPUT_POST, "submit", FILTER_UNSAFE_RAW);
 
-$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+$id = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
+
+var_dump($id);
 
 $classe = LireUneClasse($id);
 
@@ -32,6 +34,7 @@ if ($submit === "annuler") {
         Modifier une classe
     </h1>
     <form method="post">
+        <input type="hidden" name="id" value="<?= $id ?>">
         <div>
             <label for="nom">Nom:</label>
             <input type="text" id="nom" name="nom" value="<?= $classe["nom"] ?>">
