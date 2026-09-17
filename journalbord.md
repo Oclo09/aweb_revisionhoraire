@@ -10,3 +10,4 @@
 
 ## 17 Septembre 2026
 -  Ajouter une classe
+-  Modifier une classe

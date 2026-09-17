@@ -18,6 +18,10 @@ function AfficherListeClasses($lstClasses) : string {
         $resultat .= "<tr>
                         <td>{$classes['nom']}</td>
                         <td>{$classes['annee_scolaire']}</td>
+                        <td>
+                            <form method=\"post\" action=\"modifier.php?id={$classes['id']}\">
+                                <button type=\"submit\" name=\"submit\" value=\"modifier\">Modifier</button></td>
+                            </form>
                       </tr>";
     }
 
@@ -34,7 +38,7 @@ function AfficherListeClasses($lstClasses) : string {
 </head>
 <body>
     <h1>Liste des Classes</h1>
-    <form action="ajouter.php" method="post">
+    <form action="gerer.php" method="post">
         <button type="submit">Ajouter</button>
     </form>
     <hr>
@@ -42,6 +46,7 @@ function AfficherListeClasses($lstClasses) : string {
         <tr>
             <th>Nom</th>
             <th>Année Scolaire</th>
+            <th>Gérer</th>
         </tr>
         <?= AfficherListeClasses($lstClasses) ?>
     </table>

@@ -5,6 +5,9 @@ require_once ROOT . "/functions/classes.php";
 
 $submit = filter_input(INPUT_POST, "submit", FILTER_UNSAFE_RAW);
 
+$id = filter_input(INPUT_GET, "id", FILTER_VALIDATE_INT);
+
+$classe = LireUneClasse($id);
 
 if ($submit === "annuler") {
     header("Location: lstClasses.php");
@@ -13,30 +16,29 @@ if ($submit === "annuler") {
     $annee = filter_input(INPUT_POST, "annee", FILTER_SANITIZE_SPECIAL_CHARS);
 
     if ($nom != null && $annee != null) {
-        AjouterUneClasse($nom, $annee);
+        ModifierUneClasse($id, $nom, $annee);
     }
 }
-
 ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter Classe</title>
+    <title>Modifier Classe</title>
 </head>
 <body>
     <h1>
-        Ajouter une classe
+        Modifier une classe
     </h1>
     <form method="post">
         <div>
             <label for="nom">Nom:</label>
-            <input type="text" id="nom" name="nom" value="">
+            <input type="text" id="nom" name="nom" value="<?= $classe["nom"] ?>">
         </div>
         <div>
             <label for="annee">Année Scolaire:</label>
-            <input type="text" id="annee" name="annee" value="">
+            <input type="text" id="annee" name="annee" value="<?= $classe["annee_scolaire"] ?>">
         </div>
         <button type="submit" name="submit" value="annuler">Annuler</button>
         <button type="submit" name="submit" value="valider">Valider</button>

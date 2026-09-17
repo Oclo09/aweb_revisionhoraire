@@ -10,7 +10,21 @@ function LireToutesLesClasses() : array {
     return $statement->fetchAll();
 }
 
-function AjouterUneClasse(string $nom, string $annee) {
+function LireUneClasse(int $id) : array|false {
+    $sql = "SELECT id, nom, annee_scolaire
+            FROM classes
+            WHERE id = :id";
+
+    $param = [
+        ":id" => $id
+    ];
+
+    $statement = dbRun($sql, $param);
+
+    return $statement->fetch();
+}
+
+function AjouterUneClasse(string $nom, string $annee) : void {
     $sql = "INSERT INTO classes (nom, annee_scolaire)
             VALUES (:nom, :annee)";
         
@@ -19,5 +33,21 @@ function AjouterUneClasse(string $nom, string $annee) {
         ":annee" => $annee
     ];
 
+    dbRun($sql, $params);
+}
+
+function ModifierUneClasse(int $id, string $nom, string $annee) : void
+{
+    $sql = "UPDATE classes
+            SET nom = :nom,
+                annee_scolaire = :annee
+            WHERE id = :id";
+    
+    $params = [
+        ":id" => $id,
+        ":nom" => $nom,
+        ":annee" => $annee,
+    ];
+    
     dbRun($sql, $params);
 }
