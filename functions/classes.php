@@ -51,3 +51,15 @@ function ModifierUneClasse(int $id, string $nom, string $annee) : void
     
     dbRun($sql, $params);
 }
+
+function SupprimerUneClasse(int $id) : void
+{
+    $sql = "DELETE FROM classes 
+            WHERE id = :id";
+    
+    $param = [
+        ":id" => $id
+    ];
+    
+    dbRun($sql, $param);
+}
