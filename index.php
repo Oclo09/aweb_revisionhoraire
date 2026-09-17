@@ -5,4 +5,4 @@ on devrait inclure les codes (fonctions, présentation)
 
 include ici on aura le menu
 */
-header("Location: pages/classes.php");
+header("Location: pages/lstClasses.php");

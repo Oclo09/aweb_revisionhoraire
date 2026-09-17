@@ -34,6 +34,10 @@ function AfficherListeClasses($lstClasses) : string {
 </head>
 <body>
     <h1>Liste des Classes</h1>
+    <form action="ajouter.php" method="post">
+        <button type="submit">Ajouter</button>
+    </form>
+    <hr>
     <table>
         <tr>
             <th>Nom</th>
